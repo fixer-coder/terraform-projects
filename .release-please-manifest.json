@@ -1,1 +1,3 @@
-{}
+{
+  "modules/aws/data-storages/s3/public-bucket": "1.0.0"
+}

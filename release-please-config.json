@@ -1,4 +1,8 @@
 {
-  "packages": {},
+  "packages": {
+    "modules/aws/data-storages/s3/public-bucket": {
+      "package-name": "terraform-aws-s3-public-bucket"
+    }
+  },
   "release-type": "terraform-module"
 }
