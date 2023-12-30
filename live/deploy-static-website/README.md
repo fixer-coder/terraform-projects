@@ -10,7 +10,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_static_website"></a> [static\_website](#module\_static\_website) | ../../modules/aws/data-storages/s3/public-bucket | n/a |
+| <a name="module_static_website"></a> [static\_website](#module\_static\_website) | github.com/fixer-coder/terraform-projects//modules/aws/data-storages/s3/public-bucket | adc92e920f9e066c19a3f50b05c130c22b1367f0 |
 
 ## Outputs
 
