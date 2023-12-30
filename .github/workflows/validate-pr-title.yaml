@@ -8,7 +8,7 @@ on:
       - edited
       - synchronize
 
-permissions: { }
+permissions: {}
 
 jobs:
   validate-pr-title:
