@@ -1,0 +1,34 @@
+---
+name: Lint Code Base
+
+on:
+  pull_request:
+
+permissions: { }
+
+jobs:
+  lint:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Lint Code Base
+        uses: super-linter/super-linter/slim@02a6f323ba3f02b0362fee516bfd36cb1cdb9c07 # v5.4.2
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_JSCPD: false
+          VALIDATE_GO: false
+          VALIDATE_GITLEAKS: false # Disable Gitleaks due to many false positives
+          VALIDATE_NATURAL_LANGUAGE: false # Textlint has many false positives
+          # prevents auto generated READMEs with terraform-docs
+          VALIDATE_MARKDOWN: false
+          VALIDATE_TERRAFORM_TERRASCAN: false # terrascan is deprecated
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}

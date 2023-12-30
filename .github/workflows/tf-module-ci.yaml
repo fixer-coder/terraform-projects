@@ -1,0 +1,38 @@
+---
+name: TF module CI
+on:
+  pull_request:
+    branches: ["master"]
+
+env:
+  FROM_REF: origin/${{ github.event.pull_request.base.ref }}
+  TO_REF: ${{ github.event.pull_request.head.sha }}
+permissions: read-all
+jobs:
+  generate-tf-docs:
+    if: ${{ github.actor != 'dependabot[bot]' }} # skip dependabot prs
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: Find all tf modules with changes
+        id: changed_modules
+        # get all module directories with changes (ignoring deleted files)
+        # and put them in a comma separated list to be passed to terraform-docs
+        run: |
+          echo "working_dirs=$(git --no-pager diff "$(git merge-base @ "$FROM_REF")".."$TO_REF" --name-only --diff-filter=d | \
+            grep '?*\.tf' | grep -v 'test-examples\|test\|_docs' | sed 's:[^/]*$::' | \
+            sort -u | tr -s '\n' ',' | sed '$s/,$//')" >> "$GITHUB_OUTPUT"
+      - name: Generate and push terraform docs
+        uses: terraform-docs/gh-actions@f6d59f89a280fa0a3febf55ef68f146784b20ba0 # v1.0.0
+        with:
+          working-dir: ${{ steps.changed_modules.outputs.working_dirs }}
+          output-file: README.md
+          output-method: inject
+          git-push: "true"
+          # custom args not a part of the gh action
+          args: "--hide-empty=true --sort-by=required"
