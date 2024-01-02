@@ -1,5 +1,5 @@
 {
-  "modules/aws/data-storages/s3/public-bucket": "1.1.0",
+  "modules/aws/data-storages/s3/public-bucket": "1.1.1",
   "modules/aws/services/dev-tools/connections": "1.1.0",
   "modules/aws/services/dev-tools/codepipeline": "1.1.0",
   "modules/aws/security/policies": "1.1.0",
