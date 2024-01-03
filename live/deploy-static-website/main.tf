@@ -1,6 +1,5 @@
 module "static_website_s3_bucket" {
-  #  source             = "github.com/fixer-coder/terraform-projects//modules/aws/data-storages/s3/public-bucket?ref=f4872911fe6cda137aa1a2e1667b98e1ffb83b6e"
-  source             = "../../modules/aws/data-storages/s3/public-bucket"
+  source             = "github.com/fixer-coder/terraform-projects//modules/aws/data-storages/s3/public-bucket?ref=5419b67ac457403c116e2255a948b311fbed8b89"
   name               = "static-website-codepipeline-deployer-work-tester"
   force_destroy      = true
   error_document_key = "error/error.html"
@@ -88,7 +87,7 @@ module "codepipeline_deploy_static_website" {
 }
 
 module "cloudfront_distribution" {
-  source = "../../modules/aws/services/cloudfront"
+  source = "github.com/fixer-coder/terraform-projects//modules/aws/services/cloudfront?ref=5419b67ac457403c116e2255a948b311fbed8b89"
 
   cloudfront_origin_access_identity_comment = "OAI for static website"
   bucket_regional_domain_name               = module.static_website_s3_bucket.bucket_regional_domain_name
