@@ -3,5 +3,6 @@
   "modules/aws/services/dev-tools/connections": "1.1.0",
   "modules/aws/services/dev-tools/codepipeline": "1.1.0",
   "modules/aws/security/policies": "1.1.0",
-  "modules/aws/data-storages/s3/private-bucket": "1.1.1"
+  "modules/aws/data-storages/s3/private-bucket": "1.1.1",
+  "modules/aws/services/cloudfront": "1.0.0"
 }

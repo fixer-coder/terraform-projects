@@ -12,6 +12,9 @@
     "modules/aws/services/dev-tools/codepipeline": {
       "package-name": "terraform-aws-dev-tools-codepipeline"
     },
+    "modules/aws/services/cloudfront": {
+      "package-name": "terraform-aws-dev-tools-cloudfront"
+    },
     "modules/aws/security/policies": {
       "package-name": "terraform-aws-policies"
     }
