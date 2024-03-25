@@ -28,7 +28,7 @@ jobs:
             grep '?*\.tf' | grep -v 'test-examples\|test\|_docs' | sed 's:[^/]*$::' | \
             sort -u | tr -s '\n' ',' | sed '$s/,$//')" >> "$GITHUB_OUTPUT"
       - name: Generate and push terraform docs
-        uses: terraform-docs/gh-actions@f6d59f89a280fa0a3febf55ef68f146784b20ba0 # v1.0.0
+        uses: terraform-docs/gh-actions@7a62208a0090636af2df1b739da46d27fd90bdc6 # v1.1.0
         with:
           working-dir: ${{ steps.changed_modules.outputs.working_dirs }}
           output-file: README.md
